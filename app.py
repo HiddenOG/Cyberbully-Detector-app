@@ -218,8 +218,8 @@ def chatbot_page():
         bot_reply = "Message is safe."
     return jsonify({"reply": bot_reply, "flagged": flagged})
 
-if __name__ == "__main__":
-    # For local dev only
-    app.run(host="0.0.0.0", port=7860, debug=True, threaded=True)
+if __name__=="__main__":
+    app.run(debug=True, threaded=True)
+
 
 
