@@ -1,2 +1,4 @@
-web: gunicorn app:app
+web: gunicorn app:app --workers=2 --threads=8 --timeout 0
+
+
 
