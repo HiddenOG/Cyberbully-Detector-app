@@ -57,14 +57,14 @@ def get_models():
     if detoxify_model is None or toxic_model is None:
         from detoxify import Detoxify
         from transformers import pipeline
-        detoxify_model = Detoxify("original")
-        toxic_model = pipeline("text-classification", model="unitary/toxic-bert")
+        detoxify_model = Detoxify("unbiased-small")
+        #toxic_model = pipeline("text-classification", model="unitary/toxic-bert")
     return detoxify_model, toxic_model
 
 
 
 def process_comment(comment):
-    detoxify_model, toxic_model = get_models()
+    detoxify_model = get_models()
     text = comment.lower()
     bad_flags = [word for word in BAD_WORDS if word in text]
 
@@ -220,6 +220,7 @@ def chatbot_page():
 
 if __name__=="__main__":
     app.run(debug=True, threaded=True)
+
 
 
 
