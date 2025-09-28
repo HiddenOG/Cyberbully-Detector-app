@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for, Response, jsonify
 from detoxify import Detoxify
-from transformers import pipeline
 from werkzeug.utils import secure_filename
 import os
 import json
@@ -50,7 +49,6 @@ BAD_WORDS = ["stupid", "idiot", "dumb", "fuck", "shit", "bitch", "loser", "moron
 
 # --- Load models ---
 detoxify_model = Detoxify('original')
-toxic_model = pipeline("text-classification", model="unitary/toxic-bert")
 
 
 def process_comment(comment):
@@ -207,6 +205,7 @@ def chatbot_page():
 
 if __name__=="__main__":
     app.run(debug=True, threaded=True)
+
 
 
 
