@@ -48,26 +48,14 @@ RACIST_WORDS = [
 BAD_WORDS = ["stupid", "idiot", "dumb", "fuck", "shit", "bitch", "loser", "moron", "jerk", 
     "asshole", "suck", "ugly", "fool", "lame", "twat", "cunt", "damn", "retard", 'craze', 'mad', 'punish', 'your fada', 'bastard'] + TERROR_WORDS + RACIST_WORDS
 
-# --- Lazy load models ---
-detoxify_model = None
-toxic_model = None
-
-def get_models():
-    global detoxify_model, toxic_model
-    if detoxify_model is None or toxic_model is None:
-        from detoxify import Detoxify
-        from transformers import pipeline
-        detoxify_model = Detoxify("unbiased-small")
-        #toxic_model = pipeline("text-classification", model="unitary/toxic-bert")
-    return detoxify_model, toxic_model
-
+# --- Load models ---
+detoxify_model = Detoxify('original')
+toxic_model = pipeline("text-classification", model="unitary/toxic-bert")
 
 
 def process_comment(comment):
-    detoxify_model = get_models()
     text = comment.lower()
     bad_flags = [word for word in BAD_WORDS if word in text]
-
     detox_scores = detoxify_model.predict(text)
     detox_top = max(detox_scores, key=detox_scores.get)
     detox_conf = float(detox_scores[detox_top])
@@ -86,7 +74,6 @@ def process_comment(comment):
         "detox_top": detox_top,
         "detox_confidence": round(detox_conf, 3)
     }
-
 # --- Routes ---
 
 @app.route("/")
