@@ -44,7 +44,7 @@ The app includes:
 
 6. **Activate the environment:venv\Scripts\activate**
 
-7. **Install dependencies: pip install requirement.txt**
+7. **Install dependencies: pip install requirements.txt**
 
 8. **Open the Vscode in the folder location**
 
