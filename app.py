@@ -48,7 +48,7 @@ BAD_WORDS = ["stupid", "idiot", "dumb", "fuck", "shit", "bitch", "loser", "moron
     "asshole", "suck", "ugly", "fool", "lame", "twat", "cunt", "damn", "retard", 'craze', 'mad', 'punish', 'your fada', 'bastard'] + TERROR_WORDS + RACIST_WORDS
 
 # --- Load models ---
-detoxify_model = Detoxify('original')
+detoxify_model = Detoxify('unbiased-small')
 
 
 def process_comment(comment):
@@ -205,6 +205,7 @@ def chatbot_page():
 
 if __name__=="__main__":
     app.run(debug=True, threaded=True)
+
 
 
 
