@@ -50,7 +50,6 @@ BAD_WORDS = ["stupid", "idiot", "dumb", "fuck", "shit", "bitch", "loser", "moron
 # --- Load models ---
 detoxify_model = Detoxify('unbiased-small')
 
-
 def process_comment(comment):
     text = comment.lower()
     bad_flags = [word for word in BAD_WORDS if word in text]
@@ -205,6 +204,7 @@ def chatbot_page():
 
 if __name__=="__main__":
     app.run(debug=True, threaded=True)
+
 
 
 
