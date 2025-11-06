@@ -13,7 +13,7 @@ Cyberbully-detector/        #folder
 │   ├─ style.css
 │   └─ uploads/             # Empty folder, Flask will save uploads here
 
-# CyberShield - Cyberbullying & Terrorism Detector By Favour Aghogho
+# CyberShield - Cyberbullying & Terrorism Detector
 
 ## Overview
 Cybershield is a Flask web application that detects harmful comments online. 
